@@ -1,0 +1,48 @@
+{
+  "petboarding": [
+    {
+      "name": "Eva",
+      "city": "Hyderabad",
+      "address": "Begumpet",
+      "capacity": "5kgs",
+      "costperday": "1000",
+      "verified": "Yes",
+      "rating": "5",
+      "image": "https://keyassets.timeincuk.net/inspirewp/live/wp-content/uploads/sites/8/2021/02/GettyImages-997141470-e1614176377827-920x802.jpg",
+      "id": 1
+    },
+    {
+      "name": "Max",
+      "city": "Banglore",
+      "address": "Kormangla",
+      "capacity": "4kgs",
+      "costperday": "2500",
+      "verified": "Yes",
+      "rating": "4",
+      "image": "https://cdn.cheapism.com/images/iStock-915830810.max-784x410.jpg",
+      "id": 2
+    },
+    {
+      "name": "Jack",
+      "city": "Hyderabad",
+      "address": "Banjara Hills",
+      "capacity": "5kgs",
+      "costperday": "1500",
+      "verified": "Yes",
+      "rating": "5",
+      "image": "https://spiritdogtraining.com/wp-content/uploads/2021/08/cavachon-outside.png",
+      "id": 3
+    },
+    {
+      "name": "Oliver",
+      "city": "Hyderabad",
+      "address": "Kukatpalli",
+      "capacity": "4kgs",
+      "costperday": "2000",
+      "verified": "Yes",
+      "rating": "4",
+      "image": "https://petkeen.com/wp-content/uploads/2021/05/Bolognese_islavicek_Shutterstock-760x507.webp",
+      "id": 4
+    }
+  ]
+}

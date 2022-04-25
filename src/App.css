@@ -1,0 +1,38 @@
+.App {
+  text-align: center;
+}
+
+button {
+  font-size: calc(10px + 2vmin);
+}
+
+form {
+  width: 40%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+  text-align: center;
+  margin: auto;
+  grid-gap: 20px;
+}
+
+input {
+  height: 30px;
+}
+
+#submit {
+  font-size: large;
+  width: 100px;
+  margin: auto;
+}
+
+#petData {
+  display: flex;
+  margin-left: 100px;
+  margin-top: 50px;
+}
+
+#indData {
+  margin-left: 70px;
+  text-align: left;
+}
