@@ -36,3 +36,12 @@ input {
   margin-left: 70px;
   text-align: left;
 }
+
+#adminlogin>form {
+  display: block;
+}
+
+#adminlogin>form>input {
+  height: 25px;
+  margin-top: 15px;
+}
