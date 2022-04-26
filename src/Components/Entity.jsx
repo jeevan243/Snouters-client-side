@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { API } from "./API";
 
 export const Entity = () => {
   const { id } = useParams();
@@ -12,7 +13,7 @@ export const Entity = () => {
   }, []);
 
   const getData = () => {
-    axios.get(`http://localhost:8080/petboarding/${id}`).then((res) => {
+    axios.get(`${API}/pets/${id}`).then((res) => {
       setData(res.data);
     });
   };
@@ -24,7 +25,7 @@ export const Entity = () => {
 
       <div id="petData">
         <div>
-          <img src={data.image} alt="Pet" style={{ width: "700px" }} />
+          <img src={data.image} style={{ width: "700px" }} />
         </div>
         <div id="indData">
           <h2>Pet Details</h2>

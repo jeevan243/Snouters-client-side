@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 // import { getLogin } from "../loginDetails/action";
 import { useNavigate } from "react-router-dom";
+import { API } from "./API";
 
 export const LoginPage = () => {
   const navigate = useNavigate();
@@ -33,7 +34,7 @@ export const LoginPage = () => {
 
   function handleSignUp() {
     axios
-      .post("http://localhost:5000/register", user)
+      .post(`${API}/register`, user)
       .then((res) => {
         ////dispatch(getLogin(res.data.user._id));
         alert("registered sucessfully");
@@ -57,7 +58,7 @@ export const LoginPage = () => {
 
   function handleLogin() {
     axios
-      .post("http://localhost:5000/login", user1)
+      .post(`${API}/login`, user1)
       .then((res) => {
         // dispatch(getLogin(res.data.user._id));
         // dispatch(userStatus({ payload: res.data, status: true }));

@@ -7,6 +7,8 @@ import {
   TableHead,
   TableRow,
 } from "@mui/material";
+
+import { API } from "./API";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -14,10 +16,10 @@ import { useNavigate } from "react-router-dom";
 import { petData } from "../Redux/pet_boarding/action";
 
 export const Home = () => {
-  const dispactch = useDispatch();
+  const dispatch = useDispatch();
   const petdata = useSelector((store) => store.petData.petData);
 
-  // const [data, setData] = useState([]);
+  const [data, setData] = useState([]);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -27,8 +29,8 @@ export const Home = () => {
   //getData
 
   const getData = () => {
-    axios.get("http://localhost:8080/petboarding").then((res) => {
-      dispactch(petData(res.data));
+    axios.get(`${API}/pets/all`).then((res) => {
+      dispatch(petData(res.data));
       // setData(res.data);
     });
   };
@@ -66,10 +68,12 @@ export const Home = () => {
   };
 
   //Sorting
-
   const handleByPriceAsc = () => {
     data.sort((a, b) => a.costperday - b.costperday);
-    setData([...data]);
+    // setData([...data]);
+
+    dispatch(petData(petdata));
+    console.log(petdata);
   };
 
   const handleByPriceDsc = () => {
@@ -164,7 +168,7 @@ export const Home = () => {
                           size="small"
                           variant="outlined"
                           onClick={() => {
-                            navigate(`/listing/${e.id}`);
+                            navigate(`/pets/${e._id}`);
                           }}
                         >
                           Click

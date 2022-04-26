@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useState } from "react";
+import { API } from "./API";
 
 var petData = {
   name: "",
@@ -25,7 +26,7 @@ export const CreateEntity = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios.post("http://localhost:8080/petboarding", data).then((res) => {
+    axios.post(`${API}/pets/create`, data).then((res) => {
       alert("Details saved Successfully");
     });
     setData(petData);
