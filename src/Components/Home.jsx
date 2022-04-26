@@ -69,16 +69,15 @@ export const Home = () => {
 
   //Sorting
   const handleByPriceAsc = () => {
-    data.sort((a, b) => a.costperday - b.costperday);
-    // setData([...data]);
-
-    dispatch(petData(petdata));
-    console.log(petdata);
+    axios.get(`${API}/pets/all/sort1`).then((res) => {
+      dispatch(petData(res.data));
+    });
   };
 
   const handleByPriceDsc = () => {
-    data.sort((a, b) => b.costperday - a.costperday);
-    setData([...data]);
+    axios.get(`${API}/pets/all/sort-1`).then((res) => {
+      dispatch(petData(res.data));
+    });
   };
 
   const handleByRatingAsc = () => {
