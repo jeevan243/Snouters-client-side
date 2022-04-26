@@ -9,10 +9,15 @@ import {
 } from "@mui/material";
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { petData } from "../Redux/pet_boarding/action";
 
 export const Home = () => {
-  const [data, setData] = useState([]);
+  const dispactch = useDispatch();
+  const petdata = useSelector((store) => store.petData.petData);
+
+  // const [data, setData] = useState([]);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -23,7 +28,8 @@ export const Home = () => {
 
   const getData = () => {
     axios.get("http://localhost:8080/petboarding").then((res) => {
-      setData(res.data);
+      dispactch(petData(res.data));
+      // setData(res.data);
     });
   };
   //filter
@@ -141,7 +147,7 @@ export const Home = () => {
               </TableRow>
             </TableHead>
             <TableBody>
-              {data.map((e) => {
+              {petdata.map((e) => {
                 return (
                   <TableRow>
                     <>
@@ -154,7 +160,8 @@ export const Home = () => {
                       <TableCell align="center">{e.verified}</TableCell>
                       <TableCell align="center">{e.rating}</TableCell>
                       <TableCell align="center">
-                        <Button size="small"
+                        <Button
+                          size="small"
                           variant="outlined"
                           onClick={() => {
                             navigate(`/listing/${e.id}`);

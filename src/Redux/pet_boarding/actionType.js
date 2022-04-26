@@ -1,1 +1,1 @@
-export const PET_DATA = "PET_DATA"
+export const ADD_PET_DATA = "ADD_PET_DATA"
