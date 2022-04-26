@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+
 }
 
 button {
@@ -44,4 +45,17 @@ input {
 #adminlogin>form>input {
   height: 25px;
   margin-top: 15px;
+  border-radius: 5px;
+}
+
+#userregister>input {
+  height: 25px;
+  margin-top: 10px;
+  border-radius: 5px;
+}
+
+#userlogin>input {
+  height: 25px;
+  margin-top: 10px;
+  border-radius: 5px;
 }

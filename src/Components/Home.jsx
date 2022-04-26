@@ -154,7 +154,7 @@ export const Home = () => {
                       <TableCell align="center">{e.verified}</TableCell>
                       <TableCell align="center">{e.rating}</TableCell>
                       <TableCell align="center">
-                        <Button
+                        <Button size="small"
                           variant="outlined"
                           onClick={() => {
                             navigate(`/listing/${e.id}`);

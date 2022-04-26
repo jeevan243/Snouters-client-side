@@ -1,6 +1,11 @@
 import { Link } from "react-router-dom";
 
 export const Navbar = () => {
+  var data = JSON.parse(localStorage.getItem("userdata")) || null;
+  if (data !== null) {
+    var { name } = data.user;
+    console.log(name);
+  }
   return (
     <>
       <div style={{ display: "flex", justifyContent: "space-evenly" }}>
@@ -11,7 +16,7 @@ export const Navbar = () => {
           <h3>Admin</h3>
         </Link>
         <Link to={"user/login"} style={{ textDecoration: "none" }}>
-          <h3>User</h3>
+          <h3>{data !== null ? `User - ${name}` : "User"}</h3>
         </Link>
       </div>
       <hr />
