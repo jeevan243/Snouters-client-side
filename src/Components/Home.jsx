@@ -13,7 +13,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { petData } from "../Redux/pet_boarding/action";
+import { getApiData, petData } from "../Redux/pet_boarding/action";
 
 export const Home = () => {
   const dispatch = useDispatch();
@@ -23,19 +23,10 @@ export const Home = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    getData();
+    dispatch(getApiData());
   }, []);
 
-  //getData
-
-  const getData = () => {
-    axios.get(`${API}/pets/all`).then((res) => {
-      dispatch(petData(res.data));
-      // setData(res.data);
-    });
-  };
   //filter
-
   const handlefilterbycity = (e) => {
     var { value } = e.target;
     // console.log(value);
