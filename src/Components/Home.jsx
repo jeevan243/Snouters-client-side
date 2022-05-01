@@ -7,24 +7,25 @@ import {
   TableHead,
   TableRow,
 } from "@mui/material";
-
-import { API } from "./API";
-import axios from "axios";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { authReducer } from "../Redux/auth/reducer";
 import {
   getApiData,
   handleByPriceAsc,
   handleByPriceDsc,
+  handleByRatingAsc,
+  handleByRatingDsc,
 } from "../Redux/pet_boarding/action";
 
 export const Home = () => {
   const dispatch = useDispatch();
-  const petdata = useSelector((store) => store.petData.petData);
-
-  const [data, setData] = useState([]);
+  const { petData } = useSelector((store) => store.petData);
+  // const {user_status} = useSelector((store) => store.auth);
   const navigate = useNavigate();
+  // console.log(user_status)
+
 
   useEffect(() => {
     dispatch(getApiData());
@@ -40,7 +41,6 @@ export const Home = () => {
     }
   };
 
-
   //filter by verified
   const handlefilterbyVerified = (e) => {
     var { value } = e.target;
@@ -49,16 +49,6 @@ export const Home = () => {
     } else {
       dispatch(getApiData(value, "verified"));
     }
-  };
-
-  const handleByRatingAsc = () => {
-    data.sort((a, b) => a.rating - b.rating);
-    setData([...data]);
-  };
-
-  const handleByRatingDsc = () => {
-    data.sort((a, b) => b.rating - a.rating);
-    setData([...data]);
   };
 
   return (
@@ -84,10 +74,18 @@ export const Home = () => {
         <div>
           {" "}
           Sort By Rating:{" "}
-          <Button variant="contained" size="small" onClick={handleByRatingAsc}>
+          <Button
+            variant="contained"
+            size="small"
+            onClick={() => dispatch(handleByRatingAsc())}
+          >
             ASC
           </Button>{" "}
-          <Button variant="contained" size="small" onClick={handleByRatingDsc}>
+          <Button
+            variant="contained"
+            size="small"
+            onClick={() => dispatch(handleByRatingDsc())}
+          >
             DSC
           </Button>
         </div>
@@ -133,7 +131,7 @@ export const Home = () => {
               </TableRow>
             </TableHead>
             <TableBody>
-              {petdata.map((e) => {
+              {petData.map((e) => {
                 return (
                   <TableRow>
                     <>
