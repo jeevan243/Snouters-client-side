@@ -17,8 +17,6 @@ export const Entity = () => {
       setData(res.data);
     });
   };
-  console.log(data);
-
   return (
     <>
       <h2></h2>

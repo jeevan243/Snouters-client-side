@@ -4,7 +4,6 @@ export const Navbar = () => {
   var data = JSON.parse(localStorage.getItem("userdata")) || null;
   if (data !== null) {
     var { name } = data.user;
-    console.log(name);
   }
   return (
     <>

@@ -13,7 +13,11 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { getApiData, petData } from "../Redux/pet_boarding/action";
+import {
+  getApiData,
+  handleByPriceAsc,
+  handleByPriceDsc,
+} from "../Redux/pet_boarding/action";
 
 export const Home = () => {
   const dispatch = useDispatch();
@@ -26,49 +30,25 @@ export const Home = () => {
     dispatch(getApiData());
   }, []);
 
-  //filter
+  //filter by city
   const handlefilterbycity = (e) => {
     var { value } = e.target;
-    // console.log(value);
     if (value == "----") {
-      getData();
+      dispatch(getApiData());
     } else {
-      const newData = data.filter((e) => {
-        if (value == e.city) {
-          return e;
-        }
-      });
-      setData(newData);
+      dispatch(getApiData(value, "city"));
     }
   };
-  // console.log(data);
 
+
+  //filter by verified
   const handlefilterbyVerified = (e) => {
     var { value } = e.target;
-    // console.log(value);
     if (value == "---") {
-      getData();
+      dispatch(getApiData());
     } else {
-      const newData = data.filter((e) => {
-        if (value == e.verified) {
-          return e;
-        }
-      });
-      setData(newData);
+      dispatch(getApiData(value, "verified"));
     }
-  };
-
-  //Sorting
-  const handleByPriceAsc = () => {
-    axios.get(`${API}/pets/all/sort1`).then((res) => {
-      dispatch(petData(res.data));
-    });
-  };
-
-  const handleByPriceDsc = () => {
-    axios.get(`${API}/pets/all/sort-1`).then((res) => {
-      dispatch(petData(res.data));
-    });
   };
 
   const handleByRatingAsc = () => {
@@ -115,10 +95,22 @@ export const Home = () => {
         <div>
           {" "}
           Sort By Cost:{" "}
-          <Button variant="contained" size="small" onClick={handleByPriceAsc}>
+          <Button
+            variant="contained"
+            size="small"
+            onClick={() => {
+              dispatch(handleByPriceAsc());
+            }}
+          >
             ASC
           </Button>{" "}
-          <Button variant="contained" size="small" onClick={handleByPriceDsc}>
+          <Button
+            variant="contained"
+            size="small"
+            onClick={() => {
+              dispatch(handleByPriceDsc());
+            }}
+          >
             DSC
           </Button>
         </div>
