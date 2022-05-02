@@ -1,16 +1,16 @@
 import axios from "axios";
-// import { USER_AUTH } from "../auth/actionType";
-// import { userAuth } from "../auth/action";
+import { USER_AUTH } from "../auth/actionType";
+
 import { ADD_PET_DATA } from "./actionType";
 
 const API = "https://snouters-server-side.herokuapp.com/pets/all"
 
 export const petData = (payload) => ({ type: ADD_PET_DATA, payload: payload })
-// export const userAuth = (payload) = ({ type: USER_AUTH, payload: payload })
+export const userAuth = (payload) => ({ type: USER_AUTH, payload: payload })
 
 
 export const getApiData = (payload = "", type = "") => (dispatch) => {
-        // dispatch(userAuth(true))
+        
     axios.get(API).then(({ data }) => {
         if (type == "city") {
             data = data.filter((e) => {
@@ -30,6 +30,7 @@ export const getApiData = (payload = "", type = "") => (dispatch) => {
             dispatch(petData(data));
         }
         else {
+            dispatch(userAuth(true))
             dispatch(petData(data));
         }
 

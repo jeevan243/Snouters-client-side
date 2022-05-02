@@ -7,6 +7,7 @@ import {
   TableHead,
   TableRow,
 } from "@mui/material";
+import CircularProgress from '@mui/material/CircularProgress';
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -22,12 +23,13 @@ import {
 export const Home = () => {
   const dispatch = useDispatch();
   const { petData } = useSelector((store) => store.petData);
-  // const {user_status} = useSelector((store) => store.auth);
+  const { user_status } = useSelector((store) => store.auth);
   const navigate = useNavigate();
-  // console.log(user_status)
+
 
 
   useEffect(() => {
+    console.log(user_status)
     dispatch(getApiData());
   }, []);
 
@@ -131,7 +133,7 @@ export const Home = () => {
               </TableRow>
             </TableHead>
             <TableBody>
-              {petData.map((e) => {
+              {user_status ? <> {petData.map((e) => {
                 return (
                   <TableRow>
                     <>
@@ -158,6 +160,7 @@ export const Home = () => {
                   </TableRow>
                 );
               })}
+              </> : <CircularProgress/>}
             </TableBody>
           </Table>
         </TableContainer>
