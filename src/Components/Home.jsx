@@ -8,10 +8,9 @@ import {
   TableRow,
 } from "@mui/material";
 import CircularProgress from '@mui/material/CircularProgress';
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { authReducer } from "../Redux/auth/reducer";
 import {
   getApiData,
   handleByPriceAsc,
@@ -29,7 +28,7 @@ export const Home = () => {
 
 
   useEffect(() => {
-    console.log(user_status)
+    //console.log(user_status)
     dispatch(getApiData());
   }, []);
 
